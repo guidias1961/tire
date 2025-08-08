@@ -1,6 +1,35 @@
 {
+  "name": "tire-api",
+  "version": "1.0.0",
+  "description": "Token Information Real-time Engine - PulseChain token tracker API",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler publish",
+    "start:frontend": "http-server -p $PORT -c-1 ."
+  },
+  "keywords": [
+    "pulsechain",
+    "tokens",
+    "dex",
+    "api",
+    "cloudflare-worker"
+  ],
+  "author": "TIRE Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240208.0",
+    "@types/jest": "^29.5.11",
+    "jest": "^29.7.0",
+    "typescript": "^5.3.3",
+    "wrangler": "^3.25.0"
+  },
   "dependencies": {
     "http-server": "14.1.1",
     "wrangler": "3.25.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
+
