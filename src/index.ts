@@ -6,6 +6,29 @@
  * - Primary: PulseX Subgraph (https://graph.pulsechain.com/subgraphs/name/pulsechain/pulsex/graphql)
  * - Secondary: Dexscreener API (https://api.dexscreener.com/tokens/v1/pulsechain/{addresses})
  */
+ 
+ // no topo do src/index.ts
+const CORS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization"
+};
+
+function withCors(r: Response, extra: Record<string,string> = {}) {
+  const headers = new Headers(r.headers);
+  Object.entries({...CORS, ...extra}).forEach(([k,v]) => headers.set(k, v));
+  return new Response(r.body, { status: r.status, headers });
+}
+
+// dentro do fetch handler, trate OPTIONS
+if (request.method === "OPTIONS") {
+  return new Response(null, { headers: CORS });
+}
+
+// sempre que retornar algo, envelopa com withCors
+// exemplo:
+// return withCors(new Response(JSON.stringify(data), { headers: { "Content-Type": "application/json" } }));
+
 
 export interface Env {
   // Add KV namespace here if needed later
