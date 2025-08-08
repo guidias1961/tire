@@ -1,0 +1,15 @@
+name = "tire-api"
+main = "src/index.ts"
+compatibility_date = "2024-08-08"
+compatibility_flags = ["nodejs_compat"]
+
+[env.production]
+name = "tire-api"
+
+[env.development]
+name = "tire-api-dev"
+
+# Optional KV namespace for future use
+# [[kv_namespaces]]
+# binding = "TIRE_KV"
+# id = "your-kv-namespace-id"
